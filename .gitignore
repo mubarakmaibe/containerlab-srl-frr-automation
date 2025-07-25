@@ -54,3 +54,11 @@ ns-*
 
 # Optional: Test files / old lab dumps
 *_old/
+
+# Key files / credentials / secrets
+*.pem
+*.key
+*.crt
+*.env
+*.vault
+*.secret
