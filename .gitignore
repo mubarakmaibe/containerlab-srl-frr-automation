@@ -1,0 +1,56 @@
+# General
+*.log
+*.bak
+*.tmp
+*.swp
+*.swo
+*.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+env/
+venv/
+
+# Containerlab
+clab-*/  # Containerlab runtime directories
+*.clab.yml.bak
+*.tar.gz
+*.qcow2
+*.img
+
+# Docker
+*.tar
+*.pid
+docker-compose.override.yml
+
+# Ansible
+*.retry
+*.facts
+*.log
+ansible.cfg~
+inventory.yml~
+host_vars/
+group_vars/
+
+# VS Code / IDEs
+.vscode/
+.idea/
+*.code-workspace
+
+# System
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# Git
+*.orig
+
+# Linux net namespace files (if generated)
+ns-*
+
+# Optional: Test files / old lab dumps
+*_old/
