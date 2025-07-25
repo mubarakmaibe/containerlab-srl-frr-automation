@@ -1,0 +1,38 @@
+{
+ "collection_info": {
+  "namespace": "nokia",
+  "name": "grpc",
+  "version": "1.0.2",
+  "authors": [
+   "Hans Thienpondt (@HansThienpondt)",
+   "Sven Wisotzky (@wisotzky)"
+  ],
+  "readme": "README.md",
+  "tags": [
+   "ansible",
+   "grpc",
+   "gnmi",
+   "networking",
+   "yang",
+   "openconfig"
+  ],
+  "description": "Ansible collection to support networking devices using gNMI",
+  "license": [
+   "BSD-3-Clause"
+  ],
+  "license_file": null,
+  "dependencies": {},
+  "repository": "http://github.com/nokia/ansible-networking-collections/blob/master/grpc",
+  "documentation": "http://github.com/nokia/ansible-networking-collections/blob/master/grpc",
+  "homepage": "http://github.com/nokia/ansible-networking-collections/blob/master/grpc",
+  "issues": "http://github.com/nokia/ansible-networking-collections/issues"
+ },
+ "file_manifest_file": {
+  "name": "FILES.json",
+  "ftype": "file",
+  "chksum_type": "sha256",
+  "chksum_sha256": "1f8a910bc328af6f559202fa331f3e58e40d2ec2900d640df5fef475b0c23e62",
+  "format": 1
+ },
+ "format": 1
+}

@@ -1,0 +1,29 @@
+{
+ "users": {
+  "mohammed": {
+   "password": [
+    "$y$j9T$79a291341beadd38$nmqeEey6D0KPRTqAA0qI.cQkgWY49PRW4VSQw4qtYs9",
+    "$y$j9T$ca4ae27475f5c28c$zmX1cVsLzZ.eW1cwsXFttf.OypT.AoWjw2uVZXsyQH/",
+    "$y$j9T$24f38bb9104af3ab$smPVuumgG/1jErBA9MLVKxfAvozcR2dEdTWkK.4pNq8",
+    "$y$j9T$f09a46462b677ef3$8qnzatlSHf38HsRylrnOD.n97StzStS0NfKgPso1fm8",
+    "$y$j9T$c734df49f9940dd3$WSCl4dTgHnKoPfttnOr81I6rht/z3n0.6ScKRP4Ir4B"
+   ],
+   "failed_login_count": 0,
+   "locked_out": false,
+   "password_changed_after_first_login": false,
+   "password_update_time": "2025-07-25T11:44:18Z",
+   "last_successful_login_time": "2025-07-25T11:44:26Z"
+  },
+  "admin": {
+   "password": [
+    "$y$j9T$pNVjOgcNNGIWjBcdDfK/7.$Ir4uYxszxtqzVj5AGiZvdWJGs.bpLWBJvHON3YgqnC2"
+   ],
+   "failed_login_count": 0,
+   "locked_out": false,
+   "password_changed_after_first_login": false,
+   "password_update_time": "2025-07-21T15:38:26Z"
+  }
+ },
+ "ntp_sync": false,
+ "password_change_after_first_login": false
+}

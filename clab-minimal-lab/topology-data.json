@@ -1,0 +1,106 @@
+{
+  "name": "minimal-lab",
+  "type": "clab",
+  "clab": {
+    "config": {
+      "prefix": "clab",
+      "mgmt": {
+        "network": "clab",
+        "bridge": "br-2949944de3b4",
+        "ipv4-subnet": "172.20.20.0/24",
+        "ipv4-gw": "172.20.20.1",
+        "ipv6-subnet": "3fff:172:20:20::/64",
+        "ipv6-gw": "3fff:172:20:20::1",
+        "mtu": 1500,
+        "external-access": true
+      }
+    }
+  },
+  "ssh-pub-keys": ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAIcNOlxj3tBp4s8eMLSxEtfKYijQtBtCBnrEoTWnTZ5"],
+  "nodes": {
+    "frr1": {
+      "index": "0",
+      "shortname": "frr1",
+      "longname": "clab-minimal-lab-frr1",
+      "fqdn": "frr1.minimal-lab.io",
+      "group": "",
+      "labdir": "/home/mohamaibe/projects/netdevops-edge-fabric/lab/new-clab-fabric/clab-minimal-lab/frr1",
+      "kind": "linux",
+      "image": "frr-ssh:10.3.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.2",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::3",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-2949944de3b4",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/mohamaibe/projects/netdevops-edge-fabric/lab/new-clab-fabric/clab-minimal-lab/frr1",
+        "clab-node-longname": "clab-minimal-lab-frr1",
+        "clab-node-name": "frr1",
+        "clab-node-type": "",
+        "clab-owner": "mohamaibe",
+        "clab-topo-file": "/home/mohamaibe/projects/netdevops-edge-fabric/lab/new-clab-fabric/clab.yml",
+        "containerlab": "minimal-lab"
+      },
+      "port-bindings": [
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 22,
+          "protocol": "tcp"
+        }
+      ]
+    },
+    "srl1": {
+      "index": "1",
+      "shortname": "srl1",
+      "longname": "clab-minimal-lab-srl1",
+      "fqdn": "srl1.minimal-lab.io",
+      "group": "",
+      "labdir": "/home/mohamaibe/projects/netdevops-edge-fabric/lab/new-clab-fabric/clab-minimal-lab/srl1",
+      "kind": "srl",
+      "image": "ghcr.io/nokia/srlinux:25.3.2",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.3",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::2",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "1a:83:01:00:00:00",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-2949944de3b4",
+        "clab-node-group": "",
+        "clab-node-kind": "srl",
+        "clab-node-lab-dir": "/home/mohamaibe/projects/netdevops-edge-fabric/lab/new-clab-fabric/clab-minimal-lab/srl1",
+        "clab-node-longname": "clab-minimal-lab-srl1",
+        "clab-node-name": "srl1",
+        "clab-node-type": "ixrd2l",
+        "clab-owner": "mohamaibe",
+        "clab-topo-file": "/home/mohamaibe/projects/netdevops-edge-fabric/lab/new-clab-fabric/clab.yml",
+        "containerlab": "minimal-lab"
+      },
+      "port-bindings": [
+      ]
+    }
+  },
+  "links": [
+    {
+      "a": {
+        "node": "srl1",
+        "interface": "e1-1",
+        "mac": "aa:c1:ab:be:1f:ae",
+        "peer": "z"
+      },
+      "z": {
+        "node": "frr1",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:18:c3:b3",
+        "peer": "a"
+      }
+    }
+  ]
+}

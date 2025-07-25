@@ -1,0 +1,32 @@
+all:
+  children:
+    srl:
+      hosts:
+        srl1:
+          ansible_host: 172.20.20.3
+          ansible_user: mohammed
+          ansible_password: strongpassword
+          ansible_connection: local
+          ansible_network_os: nokia.srlinux.srlinux
+          srl_bgp_config:
+            local_as: 65001
+            router_id: 192.168.1.1
+            neighbors:
+              - address: 192.168.1.2
+                peer_as: 65002
+    
+    frr:
+      hosts:
+        frr1:
+          ansible_host: 172.20.20.2
+          ansible_user: root
+          ansible_password: root
+          ansible_connection: ssh
+          ansible_become: true
+          ansible_become_method: sudo
+          frr_bgp_config:
+            local_as: 65002
+            router_id: 192.168.1.2
+            neighbors:
+              - address: 192.168.1.1
+                peer_as: 65001

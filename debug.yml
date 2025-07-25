@@ -1,0 +1,123 @@
+---
+- name: Diagnose Commit and Interface Issues
+  hosts: srl
+  gather_facts: false
+  vars:
+    srl_jsonrpc_url: "https://{{ ansible_host }}:443/jsonrpc"
+  tasks:
+    - name: Check what's in candidate datastore
+      ansible.builtin.uri:
+        url: "{{ srl_jsonrpc_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          id: 1
+          method: "get"
+          params:
+            commands:
+              - path: "/network-instance[name=default]/protocols/bgp"
+                datastore: "candidate"
+        user: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        validate_certs: no
+        force_basic_auth: yes
+        timeout: 30
+      register: candidate_bgp
+
+    - name: Show candidate BGP config
+      debug:
+        var: candidate_bgp.json.result
+
+    - name: Check running datastore
+      ansible.builtin.uri:
+        url: "{{ srl_jsonrpc_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          id: 2
+          method: "get"
+          params:
+            commands:
+              - path: "/network-instance[name=default]/protocols/bgp"
+                datastore: "running"
+        user: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        validate_certs: no
+        force_basic_auth: yes
+        timeout: 30
+      register: running_bgp
+
+    - name: Show running BGP config
+      debug:
+        var: running_bgp.json.result
+
+    - name: Check if IP 192.168.1.1 exists on any interface
+      ansible.builtin.uri:
+        url: "{{ srl_jsonrpc_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          id: 3
+          method: "get"
+          params:
+            commands:
+              - path: "/interface/subinterface/ipv4/address"
+                datastore: "state"
+        user: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        validate_certs: no
+        force_basic_auth: yes
+        timeout: 30
+      register: all_ips
+
+    - name: Show all IP addresses
+      debug:
+        var: all_ips.json.result
+
+    - name: Try alternative commit method
+      ansible.builtin.uri:
+        url: "{{ srl_jsonrpc_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          id: 4
+          method: "validate"
+          params:
+            datastore: "candidate"
+        user: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        validate_certs: no
+        force_basic_auth: yes
+        timeout: 30
+      register: validate_result
+
+    - name: Show validation result
+      debug:
+        var: validate_result
+
+    - name: Execute commit via tools
+      ansible.builtin.uri:
+        url: "{{ srl_jsonrpc_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          id: 5
+          method: "tools"
+          params:
+            name: "commit"
+            input: {}
+        user: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        validate_certs: no
+        force_basic_auth: yes
+        timeout: 30
+      register: tools_commit
+
+    - name: Show tools commit result
+      debug:
+        var: tools_commit

@@ -1,0 +1,8 @@
+download_url: https://galaxy.ansible.com/api/v3/plugin/ansible/content/published/collections/artifacts/nokia-grpc-1.0.2.tar.gz
+format_version: 1.0.0
+name: grpc
+namespace: nokia
+server: https://galaxy.ansible.com/api/
+signatures: []
+version: 1.0.2
+version_url: /api/v3/plugin/ansible/content/published/collections/index/nokia/grpc/versions/1.0.2/

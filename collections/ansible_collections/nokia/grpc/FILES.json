@@ -1,0 +1,201 @@
+{
+ "files": [
+  {
+   "name": ".",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "Logo_Nokia.png",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "707edffae86209a3fd9ad1df3ca370ba1ef33deef88e9b8a5fb4fad3e89f0c91",
+   "format": 1
+  },
+  {
+   "name": "LICENSE",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "7ed8ccda0f9bf8f639a07f240cd052f33afdaa42c5901ee0db0af402ddbaf23f",
+   "format": 1
+  },
+  {
+   "name": "plugins",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/connection",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/connection/pb",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/connection/pb/gnmi_pb2.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "2ec281aeb5259bf9128ab85778ffb8994cb5f6ff5e531e64060e7200b51a3f82",
+   "format": 1
+  },
+  {
+   "name": "plugins/connection/gnmi.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e891eee6a3af5eafaea83cf2845af51733b9377104d02a882b8bc8d7e444ea3b",
+   "format": 1
+  },
+  {
+   "name": "plugins/action",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/action/network.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "1c6667d2213ef860810b7bd80a66b2c0ac2e3ac0e12177b9f35a31d1b2876e82",
+   "format": 1
+  },
+  {
+   "name": "plugins/action/gnmi_config.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "751c3cf46c304d03927fc8e43a432d7f43933d1c69f5c032affb43c26dd8091b",
+   "format": 1
+  },
+  {
+   "name": "plugins/modules",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/modules/gnmi_get.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "5bef6fea254d8c1f96215a0f8d1b92507aa8a591b851a2649364bfb15d455379",
+   "format": 1
+  },
+  {
+   "name": "plugins/modules/gnmi_capabilities.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "0c41f4a435413934970c391e06eefaaa0652324ec889f64952b305972d19f4f8",
+   "format": 1
+  },
+  {
+   "name": "plugins/modules/gnmi_config.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "18326fb564f44d7c9a0e9e3fd7693662c0a6254d809e99c500095bddc3c3d212",
+   "format": 1
+  },
+  {
+   "name": "plugins/modules/gnmi_subscribe.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "fcc7ca909a1df6568ec1bfcd9ba03fdd6e01820526bd0e7ebec6acf56a93a207",
+   "format": 1
+  },
+  {
+   "name": "playbooks",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "playbooks/SROS_gNMI_ConfigDemo.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "3f15da12056eeee58deb2748be4bfba7205f89f8914bb267fb72c441fd15d50d",
+   "format": 1
+  },
+  {
+   "name": "playbooks/SROS_gNMI_StreamingTelemetry.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "ecc4d3f5c9ce40ed6c732b91f5e4c4d5f9a1694d267b29c1e09052544c330685",
+   "format": 1
+  },
+  {
+   "name": "playbooks/gNMI_GetConfig.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "fed474f49281508f5fd1c570997cf5f29877e92104bdcacccc9ae46630fe9e38",
+   "format": 1
+  },
+  {
+   "name": "playbooks/gNMI_Backup.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "70d1e43ef6359a64def6d0cc7c1212fde6fb42eec602c80cb0bec9faeb4d42fa",
+   "format": 1
+  },
+  {
+   "name": "playbooks/gNMI_Capabilities.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "4ce54e16fa82fa8a6668695d119b81b730699bddec88037a74797907d69881dc",
+   "format": 1
+  },
+  {
+   "name": "playbooks/ansible.cfg",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "ec490722fdf8197d35d6519ca8c3fc389445314dc5c92205e0d61de10e3d6743",
+   "format": 1
+  },
+  {
+   "name": "playbooks/gNMI_SubscribeOnce.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "615064a295a0b1c514f12a8db379a67bb264a54526bda511ed65e51da4bec638",
+   "format": 1
+  },
+  {
+   "name": "playbooks/gNMI_Restore.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "16309fe7921728af9fdf37c76176603a85ba5fa73aad1d09e517a17733da5161",
+   "format": 1
+  },
+  {
+   "name": "playbooks/hosts",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "2761b2532331926ade9f18f8827915fb04819fd5a0ed7892f4453ff30519b1fc",
+   "format": 1
+  },
+  {
+   "name": "playbooks/SROS_gNMI_GetConfig_SubOnce.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "7148e92e0727fb9578508bf40dc596f880abe2d119f6e2b6ab4d7f17306ca150",
+   "format": 1
+  },
+  {
+   "name": "README.md",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "c58898879361c99fc64aa6973decf114727409d50e3f82ac3d55015e52979a43",
+   "format": 1
+  }
+ ],
+ "format": 1
+}

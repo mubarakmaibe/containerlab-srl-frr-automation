@@ -1,0 +1,23 @@
+
+name: minimal-lab
+
+topology:
+  nodes:
+    srl1:
+      kind: srl
+      image: ghcr.io/nokia/srlinux:25.3.2
+      mgmt-ipv4: 172.20.20.3  # Match your inventory
+        
+    frr1:
+      kind: linux
+      image: frr-ssh:10.3.1
+      mgmt-ipv4: 172.20.20.2  # Match your inventory
+      binds:
+        - ./configs/frr1/daemons:/etc/frr/daemons
+
+  links:
+    - endpoints: ["srl1:ethernet-1/1", "frr1:eth1"]
+
+#mgmt:
+  #network: minimal-lab
+  #ipv4-subnet: 172.20.20.0/24

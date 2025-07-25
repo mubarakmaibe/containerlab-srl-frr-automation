@@ -1,0 +1,110 @@
+- name: Configure SR Linux via PyGNMI
+  hosts: srl1
+  gather_facts: false
+  tasks:
+    - name: Run PyGNMI script
+      ansible.builtin.script: configure_srl_bgp.py
+      args:
+        executable: python3
+      environment:
+        SRL_HOST: "{{ ansible_host }}"
+        SRL_USER: "{{ ansible_user }}"
+        SRL_PASS: "{{ ansible_password }}"
+        ROUTER_ID: "{{ srl_bgp_config.router_id }}"
+        LOCAL_AS: "{{ srl_bgp_config.local_as }}"
+        NEIGHBORS: "{{ srl_bgp_config.neighbors | to_json }}"
+      register: srl_config_result
+    
+    - name: Debug SR Linux configuration
+      ansible.builtin.debug:
+        var: srl_config_result
+
+- name: Configure FRR
+  hosts: frr
+  gather_facts: false
+  tasks:
+    - name: Ensure FRR configuration directory exists
+      ansible.builtin.file:
+        path: /etc/frr
+        state: directory
+        mode: '0755'
+      become: true
+
+    - name: Configure eth1 interface IP
+      ansible.builtin.shell: |
+        ip addr add 192.168.1.2/30 dev eth1 2>/dev/null || true
+        ip link set eth1 up
+      become: true
+
+    - name: Create frr.conf with full BGP configuration
+      ansible.builtin.copy:
+        content: |
+          ! FRR configuration file
+          hostname frr
+          password admin
+          enable password admin
+          service integrated-vtysh-config
+          !
+          ! Loopback interface
+          interface lo1
+           ip address {{ frr_bgp_config.router_id }}/32
+          !
+          ! Route-map to allow all routes
+          route-map ALLOW-ALL permit 10
+          !
+          router bgp {{ frr_bgp_config.local_as }}
+           bgp router-id {{ frr_bgp_config.router_id }}
+           ! Advertise loopback network
+           network {{ frr_bgp_config.router_id }}/32
+          {% for n in frr_bgp_config.neighbors %}
+           neighbor {{ n.address }} remote-as {{ n.peer_as }}
+           neighbor {{ n.address }} route-map ALLOW-ALL in
+           neighbor {{ n.address }} route-map ALLOW-ALL out
+           address-family ipv4 unicast
+            neighbor {{ n.address }} activate
+           exit-address-family
+          {% endfor %}
+          !
+          line vty
+        dest: /etc/frr/frr.conf
+        mode: '0644'
+      become: true
+      notify: restart frr
+
+    - name: Configure loopback interface
+      ansible.builtin.shell: |
+        ip link add lo1 type dummy 2>/dev/null || true
+        ip addr add {{ frr_bgp_config.router_id }}/32 dev lo1 2>/dev/null || true
+        ip link set lo1 up
+      become: true
+
+    - name: Restart FRR to apply configuration
+      ansible.builtin.shell: /usr/lib/frr/frrinit.sh restart
+      become: true
+
+    - name: Wait for FRR to start
+      ansible.builtin.pause:
+        seconds: 10
+
+    - name: Verify BGP session
+      ansible.builtin.shell: vtysh -c "show ip bgp summary"
+      become: true
+      register: bgp_summary
+
+    - name: Check BGP routes
+      ansible.builtin.shell: vtysh -c "show ip bgp"
+      become: true
+      register: bgp_routes
+
+    - name: Debug BGP session
+      ansible.builtin.debug:
+        var: bgp_summary.stdout
+
+    - name: Debug BGP routes
+      ansible.builtin.debug:
+        var: bgp_routes.stdout
+
+  handlers:
+    - name: restart frr
+      ansible.builtin.shell: /usr/lib/frr/frrinit.sh restart
+      become: true
